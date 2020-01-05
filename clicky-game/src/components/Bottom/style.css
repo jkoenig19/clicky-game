@@ -1,0 +1,9 @@
+.bottom {
+    margin-top: 50px;
+    border-top: 60px solid slateblue;
+    padding-left: 10px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    background-color: darkblue;
+}
