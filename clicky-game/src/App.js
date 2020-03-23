@@ -10,6 +10,7 @@ class App extends Component {
   state = {
       pictures,
       message: "Click an image to begin!",
+      animate: 0,
       score: 0,
       top_score: 0
     };
@@ -25,7 +26,8 @@ class App extends Component {
       selected_Pic[0].selection = true;
       const pictures = this.state.pictures.sort(() => 0.5 - Math.random())
       const message = "You guessed correctly!"
-      this.setState({ pictures, message, score });
+      const animate = this.state.animate + 1;
+      this.setState({ pictures, message, score, animate });
     }
     else {
       const score = 0;
@@ -33,7 +35,8 @@ class App extends Component {
       const all_pictures = this.state.pictures.forEach(picture => picture.selection = false);
       console.log(all_pictures)
       const message = "You guessed incorrectly!"
-      this.setState({ pictures, message, score });
+      const animate = 0;
+      this.setState({ pictures, message, score, animate });
     }
   };
 
@@ -42,10 +45,13 @@ class App extends Component {
       <div>
         <Title
         message={this.state.message}
+        animate={this.state.animate}
         score={this.state.score}
         top_score={this.state.top_score}
         />  
-        <Background>
+        <Background
+          message={this.state.message}
+          >
           {this.state.pictures.map(picture => (
             <Images
               id={picture.id}
